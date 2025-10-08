@@ -28,6 +28,7 @@ import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -61,7 +62,7 @@ public class HttpExchange {
   public static final int BASIC_AUTHENTICATION = 1;
 
   /**
-   * Digest authenctication
+   * Digest authentication
    */
   public static final int DIGEST_AUTHENTICATION = 2;
 
@@ -131,7 +132,7 @@ public class HttpExchange {
 
   /**
    * Creates new HttpRequest based of the passed request line. The request line
-   * provied must be in the form of:<br>
+   * provided must be in the form of:<br>
    * 
    * <pre>
    *     METHOD PATH HTTP-VERSION
@@ -298,7 +299,7 @@ public class HttpExchange {
 
   /**
    * <code>setRequestHeader</code> sets a request header for this request
-   * overwritting any previously existing header/values with the same name.
+   * overwriting any previously existing header/values with the same name.
    *
    * <strong>NOTE:</strong> Header names are not case-sensitive.
    *
@@ -402,7 +403,7 @@ public class HttpExchange {
                 HttpRequest.BodyPublishers.noBody() : HttpRequest.BodyPublishers.ofString(this.content));
         break;
       default:
-        throw new RuntimeException("unknow method " + this.method);
+        throw new RuntimeException("unknown method " + this.method);
     }
 
     switch (_authType) {
